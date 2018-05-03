@@ -5,6 +5,7 @@
 mov = VideoReader('WIN_20180503_144803.mp4');
 videoFileReader = vision.VideoFileReader('WIN_20180503_144803.mp4');
 videoPlayer = vision.VideoPlayer('Position',[100,100,680,520]);
+vidLength = mov.Duration;
 numFrames = mov.NumberOfFrames;
 frame_rate = mov.FrameRate;
 disp(numFrames)
