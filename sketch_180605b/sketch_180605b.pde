@@ -20,6 +20,7 @@ void setup() {
   frameRate(60);
   font = createFont("FranklinGothicHeavyRegular.ttf", 20);
   textFont(font);
+  smooth(4);
 }
 
 void draw() {
@@ -50,13 +51,11 @@ void draw() {
   circlePosition = new PVector(a, b);
   circleTrail.add(circlePosition);
   trailLength = circleTrail.size() - 2;
-  
   for (int i = 0; i < trailLength; i++) {
     PVector currentTrail = circleTrail.get(i);
     PVector previousTrail = circleTrail.get(i + 1);
-
-    stroke(0);//255*i/trailLength);
-    strokeWeight(10);
+    stroke(0);
+    strokeWeight(10);    
     line(
       currentTrail.x, currentTrail.y,
       previousTrail.x, previousTrail.y
