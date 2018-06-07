@@ -2,6 +2,9 @@ float a;
 float b;
 float c;
 float d;
+float e;
+float xmidpoint;
+float ymidpoint;
 ArrayList<PVector> HeartRate;
 PVector circlePosition;
 PVector newcirclePosition;
@@ -13,13 +16,13 @@ void setup() {
   size(800, 500);  
   c = -20;
   HeartRate = new ArrayList<PVector>();
-  frameRate(1);
+  frameRate(240);
   smooth(4);
-  stroke(0);
+  stroke(255);
 }
 
 void draw(){
-  background(255); 
+  background(0); 
   c = random(30, 221);
   b = 400 - c;
   a = 0;
@@ -36,7 +39,10 @@ void draw(){
   for (int i = 0; i < trailLength; i++) {
     PVector currentTrail = HeartRate.get(i);
     PVector previousTrail = HeartRate.get(i + 1);
+    e = 400 - previousTrail.y;
     d = 400 - currentTrail.y;
+    xmidpoint = (currentTrail.x + previousTrail.x)/2;
+    ymidpoint = (currentTrail.y + previousTrail.y)/2;
     if (d>29){
     stroke(0,255,0);
     }
@@ -49,6 +55,20 @@ void draw(){
     strokeWeight(2);
     line(
       currentTrail.x, currentTrail.y,
+      xmidpoint, ymidpoint
+    );
+    if (e>29){
+    stroke(0,255,0);
+    }
+    if (e>100){
+      stroke(255,255,0);
+    }
+    if (e>160){
+      stroke(255,0,0);
+    }
+    strokeWeight(2);
+    line(
+      xmidpoint, ymidpoint,
       previousTrail.x, previousTrail.y
     );
   }
