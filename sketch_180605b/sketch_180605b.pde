@@ -1,6 +1,6 @@
-float a;
-float b;
-float c;
+float scaledwidth;
+float scaledheight;
+float counter;
 ArrayList<PVector> circleTrail;
 PVector circlePosition;
 int trailSize = 20;
@@ -13,9 +13,9 @@ void setup() {
   img = loadImage("Untitled.png");
   stroke(255);
   fill(0);
-  a = width/2.77;
-  b = height/1.6;
-  c = -20;
+  scaledwidth = width/2.77;
+  scaledheight = height/1.6;
+  counter = -20;
   circleTrail = new ArrayList<PVector>();
   frameRate(60);
   font = createFont("FranklinGothicHeavyRegular.ttf", 20);
@@ -27,28 +27,28 @@ void draw() {
   background(27, 214, 135); 
   image(img, 0, 0);  
   //line(800,800,0,800);
-  a = a + (width/720);
-  if(c<10 && c>-1){
+  scaledwidth = scaledwidth + (width/720);
+  if(counter<10 && counter>-1){
   }
-  if(c<40 && c>19){
-  b = b - (height/320);
+  if(counter<40 && counter>19){
+  scaledheight = scaledheight - (height/320);
   }
-  if(c<75 && c>39){
-  b = b + (height/320);
+  if(counter<75 && counter>39){
+  scaledheight = scaledheight + (height/320);
   }
-  if(c<95 && c>74){
-  b = b - (height/256);
+  if(counter<95 && counter>74){
+  scaledheight = scaledheight - (height/256);
   }
-  if(c<120 && c>94){
-  b = b + (height/426.67);
+  if(counter<120 && counter>94){
+  scaledheight = scaledheight + (height/426.67);
   }
-  if(c<132 && c>119){
-  b = b - (height/441.38);
+  if(counter<132 && counter>119){
+  scaledheight = scaledheight - (height/441.38);
   }
-  if(c<215 && c>204){
+  if(counter<215 && counter>204){
   }
-  c++;
-  circlePosition = new PVector(a, b);
+  counter++;
+  circlePosition = new PVector(scaledwidth, scaledheight);
   circleTrail.add(circlePosition);
   trailLength = circleTrail.size() - 2;
   for (int i = 0; i < trailLength; i++) {
@@ -61,15 +61,15 @@ void draw() {
       previousTrail.x, previousTrail.y
     );
   }
-  ellipse(a, b, 15, 15); 
+  ellipse(scaledwidth, scaledheight, 15, 15); 
   if (trailLength >= trailSize) {
     circleTrail.remove(0);
   }
  
-  if (c>162){
-  c = -20;
-  a = width/2.77;
-  b = height/1.6;
+  if (counter>162){
+  counter = -20;
+  scaledwidth = width/2.77;
+  scaledheight = height/1.6;
   circleTrail.clear();
   }
   textAlign(CENTER);
