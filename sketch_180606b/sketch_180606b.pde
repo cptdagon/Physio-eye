@@ -1,4 +1,5 @@
 float Xoffset;
+float Yoffset;
 float depth;
 float Vpos;
 float currentvalue;
@@ -25,6 +26,7 @@ void setup() {
   hr = 60;
   hrcounter = 2;
   Xoffset = 50;
+  Yoffset = 250;
   strokeWeight(2);
 }
 
@@ -38,14 +40,14 @@ void draw(){
   }
   hr = hr + hrcounter;
   Vpos = hr;
-  depth = 250 - Vpos;
+  depth = Yoffset - Vpos;
   
   stroke(255);
-  line(Xoffset,20,Xoffset,250);
-  line(Xoffset,250,(500+Xoffset),250);
+  line(Xoffset,Yoffset-(230),Xoffset,Yoffset);
+  line(Xoffset,Yoffset,(500+Xoffset),Yoffset);
   
   float x = Xoffset-15;
-  float y = 140;
+  float y = Yoffset-110;
   
   textAlign(CENTER,BOTTOM);
   pushMatrix();
@@ -55,7 +57,7 @@ void draw(){
   popMatrix();
   
   textAlign(CENTER);
-  text("time (s)",Xoffset+225,270);
+  text("time (s)",Xoffset+225,Yoffset+20);
   
   ellipse(Xoffset, depth, 5, 5); 
   circlePosition = new PVector(Xoffset, depth);
@@ -71,8 +73,8 @@ void draw(){
   for (int i = 0; i < trailLength; i++) {
     PVector currentTrail = HeartRate.get(i);
     PVector previousTrail = HeartRate.get(i + 1);
-    previousvalue = 250 - previousTrail.y;
-    currentvalue = 250 - currentTrail.y;
+    previousvalue = Yoffset - previousTrail.y;
+    currentvalue = Yoffset - currentTrail.y;
     xmidpoint = (currentTrail.x + previousTrail.x)/2;
     ymidpoint = (currentTrail.y + previousTrail.y)/2;
     
