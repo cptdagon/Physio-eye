@@ -11,22 +11,22 @@ int hr;
 ArrayList<PVector> HeartRate;
 PVector circlePosition;
 PVector newcirclePosition;
-int trailSize = 50;
+int trailSize = 60;
 int trailLength;
 PFont font;
 
 void setup() {
   size(800, 500);  
   HeartRate = new ArrayList<PVector>();
-  frameRate(15);
+  frameRate(1);
   smooth(8);
   stroke(255);
   font = createFont("FranklinGothicHeavyRegular.ttf", 15);
   textFont(font);
   hr = 60;
   hrcounter = 2;
-  Xoffset = 50;
-  Yoffset = 250;
+  Xoffset = 60;
+  Yoffset = 270;
   strokeWeight(2);
 }
 
@@ -41,12 +41,21 @@ void draw(){
   hr = hr + hrcounter;
   Vpos = hr;
   depth = Yoffset - Vpos;
-  
+  //gridlines;
+  stroke(100);
+  for(int i = 0; i<6; i++){
+    line(Xoffset,Yoffset-(50*i),(600+Xoffset),Yoffset-(50*i));    
+  }
+  for(int i = 0; i<13; i++){
+  line(Xoffset+(50*i),Yoffset-(250),Xoffset+(50*i),Yoffset);
+  }
+  //axis
   stroke(255);
-  line(Xoffset,Yoffset-(230),Xoffset,Yoffset);
-  line(Xoffset,Yoffset,(500+Xoffset),Yoffset);
+  line(Xoffset,Yoffset-(250),Xoffset,Yoffset);
+  line(Xoffset,Yoffset,(600+Xoffset),Yoffset);
   
-  float x = Xoffset-15;
+  
+  float x = Xoffset-30;
   float y = Yoffset-110;
   
   textAlign(CENTER,BOTTOM);
@@ -57,7 +66,7 @@ void draw(){
   popMatrix();
   
   textAlign(CENTER);
-  text("time (s)",Xoffset+225,Yoffset+20);
+  text("time (s)",Xoffset+(600/2)-25,Yoffset+50);
   
   ellipse(Xoffset, depth, 5, 5); 
   circlePosition = new PVector(Xoffset, depth);
