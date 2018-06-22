@@ -6,7 +6,7 @@ PVector circlePosition;
 int trailSize = 20;
 int trailLength;
 PImage img,img2;
-PFont font;
+PFont font, largefont;
 
 void setup() {
   size(720, 1280);
@@ -19,7 +19,8 @@ void setup() {
   circleTrail = new ArrayList<PVector>();
   frameRate(60);
   font = createFont("FranklinGothicHeavyRegular.ttf", 20);
-  textFont(font);
+  largefont = createFont("FranklinGothicHeavyRegular.ttf",30);
+  
   smooth(4);
 }
 
@@ -67,11 +68,15 @@ void draw() {
   }
  
   if (counter>162){
-  counter = -20;
-  scaledwidth = width/2.77;
-  scaledheight = height/1.6;
-  circleTrail.clear();
+    counter = -20;
+    scaledwidth = width/2.77;
+    scaledheight = height/1.6;
+    circleTrail.clear();
   }
+  textFont(largefont);
+  textAlign(CENTER);
+  text("LOADING",width/2,height*5/7);
+  textFont(font);
   textAlign(CENTER);
   text("© DagonIM 2018", width/2, (height*8)/9);
 }

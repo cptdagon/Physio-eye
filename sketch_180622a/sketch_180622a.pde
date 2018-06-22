@@ -27,4 +27,11 @@ void setup() {
 void draw() {
   background(27, 214, 135); 
   image(img, 0, 0);  
+  
+  textAlign(CENTER);
+  text("Sign Up",width/2,height*3/4);
+  text("Sign Up",width/2,height*3/4);
+  
+  textAlign(CENTER);
+  text("© DagonIM 2018", width/2, (height*8)/9);
 }
