@@ -1,37 +1,35 @@
-float scaledwidth;
-float scaledheight;
-float counter;
-ArrayList<PVector> circleTrail;
-PVector circlePosition;
-int trailSize = 20;
-int trailLength;
-PImage img,img2;
-PFont font;
-
+PImage img;
+PFont font, largefont;
 
 void setup() {
+  //
   size(720, 1280);
+  //
   img = loadImage("Untitled.png");
-  stroke(255);
-  fill(0);
-  scaledwidth = width/2.77;
-  scaledheight = height/1.6;
-  counter = -20;
-  circleTrail = new ArrayList<PVector>();
+  //
   frameRate(60);
+  //
   font = createFont("FranklinGothicHeavyRegular.ttf", 20);
-  textFont(font);
+  largefont = createFont("FranklinGothicHeavyRegular.ttf",30);
+  //
+  fill(0);
+  stroke(255);
   smooth(4);
 }
 
 void draw() {
   background(27, 214, 135); 
   image(img, 0, 0);  
-  
+  //
+  textFont(largefont);
   textAlign(CENTER);
-  text("Sign Up",width/2,height*3/4);
-  text("Sign Up",width/2,height*3/4);
-  
+  text("Login",width/2,height/2);
+  text("Username:",width/2,height*16/30);
+  text("Password:",width/2,height*17/30);
+  text("Sign Up",width/2,height*13/20);
+  //
+  textFont(font);
   textAlign(CENTER);
+  text("Forgotten Password",width/2,height*12/20);
   text("© DagonIM 2018", width/2, (height*8)/9);
 }
